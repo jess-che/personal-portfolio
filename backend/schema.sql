@@ -1,0 +1,5 @@
+CREATE TABLE my_table (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    column1 TEXT NOT NULL,
+    column2 TEXT NOT NULL
+);
