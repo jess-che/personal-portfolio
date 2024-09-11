@@ -26,14 +26,6 @@
   object-position: bottom left; /* Align image to the bottom left to cut off the top part */
 }
 
-.blockingLayer {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  background-color: #121212; /* Same as the container's background color */
-  z-index: 10; /* Ensure it stays ahead of all the other layers */
-}
-
 @keyframes fall {
   0% {
     transform: translateY(-100vh) translateX(0) rotate(0deg);
@@ -48,6 +40,6 @@
 .petal {
   position: absolute;
   animation: fall linear infinite;
-  z-index: 100;
+  z-index: 5;
   pointer-events: none; /* Prevent interference with other elements */
 }

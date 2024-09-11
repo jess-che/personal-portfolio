@@ -6,23 +6,23 @@ import styles from '../styles/ParallaxLayers.module.css';
 
 export default function Home() {
   const parallaxRef = useRef<HTMLDivElement | null>(null);
-  const frontRocksRef = useRef<HTMLDivElement | null>(null);
-  const contentRef = useRef<HTMLDivElement | null>(null);
+  // const frontRocksRef = useRef<HTMLDivElement | null>(null);
+  // const contentRef = useRef<HTMLDivElement | null>(null);
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (frontRocksRef.current && contentRef.current) {
-        const scrollY = window.scrollY;
-        const yOffset = scrollY * -.40;
-        frontRocksRef.current.style.transform = `translateY(${yOffset}px)`;
-        contentRef.current.style.transform = `translateY(${yOffset}px)`;
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (frontRocksRef.current && contentRef.current) {
+  //       const scrollY = window.scrollY;
+  //       const yOffset = scrollY * -.40;
+  //       frontRocksRef.current.style.transform = `translateY(${yOffset}px)`;
+  //       contentRef.current.style.transform = `translateY(${yOffset}px)`;
+  //     }
+  //   };
   
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
   
 
   return (
@@ -33,23 +33,9 @@ export default function Home() {
         <div ref={parallaxRef}>
           <ParallaxComponent />
         </div>
-        <div
-          ref={frontRocksRef}
-          className={`${styles.layer}`}
-          style={{ transform: 'translateY(0px)' }}
-        >
-          <img
-            src="/layers/front_rocks.png"
-            alt="Front Rocks"
-            className={`${styles.image}`}
-          />
+        <div className="flex flex-col w-[100vw] h-[100vh] bg-[#121212]">
+          {/* rest of contents go here */}
         </div>
-        {/* eventually take out height and put all teh contents in here */}
-        <div
-          ref={contentRef}
-          className="flex flex-col w-[100vw] h-[100vh] bg-[#121212]"
-          style={{ transform: 'translateY(0px)' }}
-        ></div>
       </div></>
       </Restricted>
       

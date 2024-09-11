@@ -5,26 +5,8 @@ import styles from '../styles/ParallaxLayers.module.css';
 const generateRandomValue = (min: number, max: number) => Math.random() * (max - min) + min;
 
 const ParallaxLayers: React.FC = () => {
-  const [blockingLayerStyle, setBlockingLayerStyle] = useState({});
   const imageRef = useRef<HTMLImageElement>(null);
   const [petals, setPetals] = useState<JSX.Element[]>([]);
-
-  useEffect(() => {
-    const updateBlockingLayerStyle = () => {
-      if (imageRef.current) {
-        const imageHeight = imageRef.current.clientHeight;
-        setBlockingLayerStyle({
-          top: `${imageHeight}px`,
-          height: `calc(100vh - ${imageHeight}px + 20px)`,
-        });
-      }
-    };
-
-    updateBlockingLayerStyle();
-
-    window.addEventListener('resize', updateBlockingLayerStyle);
-    return () => window.removeEventListener('resize', updateBlockingLayerStyle);
-  }, []);
 
   useEffect(() => {
     const createPetal = () => {
@@ -41,8 +23,7 @@ const ParallaxLayers: React.FC = () => {
             top: `-30px`, // Start slightly above the viewport
             animationDuration: `${duration}s`,
             animationDelay: `${delay}s`,
-            position: 'absolute',
-            zIndex: 100,
+            position: 'absolute'
           }}
         ></div>
       );
@@ -76,8 +57,11 @@ const ParallaxLayers: React.FC = () => {
           <Parallax className={styles.layer} speed={25}>
             <img src="/layers/mound.png" alt="Mound" className={styles.image} />
           </Parallax>
-          <Parallax className={styles.layer} speed={32}>
-            <div className={styles.blockingLayer} style={blockingLayerStyle}></div>
+          <Parallax className={styles.layer} speed={55}>
+            <div className='flex flex-col'>
+              <img src="/layers/front_rocks.png" alt="Front Rocks" className={styles.image} />
+              <div className="w-[100vw] h-[100vh] bg-[#121212]"></div>
+            </div>
           </Parallax>
         </div>
         {petals}
