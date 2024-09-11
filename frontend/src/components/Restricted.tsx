@@ -1,11 +1,11 @@
 // pages/Restricted.js
-import React, { useEffect, useState, ReactNode } from 'react';
+import React, { useEffect, useState, ReactNode } from "react";
 
 interface RestrictedProps {
-    children: ReactNode;
-  }
-  
-  export default function Restricted({ children }: RestrictedProps) {
+  children: ReactNode;
+}
+
+export default function Restricted({ children }: RestrictedProps) {
   const [isRestricted, setIsRestricted] = useState(false);
 
   useEffect(() => {
@@ -21,9 +21,9 @@ interface RestrictedProps {
 
     checkAspectRatio();
 
-    window.addEventListener('resize', checkAspectRatio);
+    window.addEventListener("resize", checkAspectRatio);
     return () => {
-      window.removeEventListener('resize', checkAspectRatio);
+      window.removeEventListener("resize", checkAspectRatio);
     };
   }, []);
 
@@ -32,15 +32,13 @@ interface RestrictedProps {
       <div className="flex items-center justify-center h-screen bg-red-100 text-center">
         <div>
           <h1 className="text-3xl font-bold text-red-600">Access Restricted</h1>
-          <p className="text-lg mt-4">Please adjust your browser size to access this content.</p>
+          <p className="text-lg mt-4">
+            Please adjust your browser size to access this content.
+          </p>
         </div>
       </div>
     );
   }
 
-  return (
-    <div className="">
-      {children}
-    </div>
-  );
+  return <div className="">{children}</div>;
 }

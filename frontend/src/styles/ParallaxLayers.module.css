@@ -16,6 +16,7 @@
   align-items: flex-start; /* Align the images at the top */
   justify-content: center;
   will-change: transform;
+  z-index: 0;
 }
 
 .image {
@@ -25,6 +26,18 @@
   object-fit: cover; /* Ensure the image covers the container */
   object-position: bottom left; /* Align image to the bottom left to cut off the top part */
 }
+
+.front{
+  z-index: 10;
+}
+
+@media screen and (max-aspect-ratio: 4/3) {
+  .responsiveText4_3 {
+    z-index: 2;
+    /* color: red; */
+  }
+}
+
 
 @keyframes fall {
   0% {

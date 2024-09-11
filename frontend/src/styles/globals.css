@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Open+Sans:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
 
 :root {
   --background: #ffffff;

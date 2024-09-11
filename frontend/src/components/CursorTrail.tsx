@@ -1,31 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 interface Dot {
   x: number;
   y: number;
   size: number;
   opacity: number;
-  id: number;
+  id: string; // Use string for UUID
 }
 
 const CursorTrail: React.FC = () => {
   const [dots, setDots] = useState<Dot[]>([]);
-  const [idCounter, setIdCounter] = useState<number>(0);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      const chance = Math.random(); // Generates a random number between 0 and 1
+      const chance = Math.random();
 
-      if (chance > 0.85) { 
+      if (chance > 0.85) {
         const newDot: Dot = {
           x: event.clientX,
           y: event.clientY,
           size: Math.random() * 15 + 10,
-          opacity: .6,
-          id: idCounter,
+          opacity: 0.6,
+          id: uuidv4(), // Generate unique ID
         };
         setDots((prevDots) => [...prevDots, newDot]);
-        setIdCounter((prevCounter) => prevCounter + 1);
       }
     };
 
@@ -37,7 +36,7 @@ const CursorTrail: React.FC = () => {
           .map((dot) => ({
             ...dot,
             opacity: dot.opacity - 0.05,
-            y: dot.y - 1, // move the dot slightly up as it fades
+            y: dot.y - 1,
           }))
           .filter((dot) => dot.opacity > 0)
       );
@@ -47,7 +46,7 @@ const CursorTrail: React.FC = () => {
       window.removeEventListener('mousemove', handleMouseMove);
       clearInterval(interval);
     };
-  }, [idCounter]);
+  }, []);
 
   return (
     <>
